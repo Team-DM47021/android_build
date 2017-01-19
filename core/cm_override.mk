@@ -1,0 +1,3 @@
+
+I_WANT_A_QUAIL_STAR := true
+WITHOUT_CHECK_API := true

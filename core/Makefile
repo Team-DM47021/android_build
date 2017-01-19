@@ -1327,15 +1327,18 @@ define build-systemimage-target
            exit 1 )
 endef
 
+#################################
+# Dirty hack to override cm 
+include $(BUILD_SYSTEM)/cm_override.mk
+
 $(BUILT_SYSTEMIMAGE): $(FULL_SYSTEMIMAGE_DEPS) $(INSTALLED_FILES_FILE)
 	$(call build-systemimage-target,$@)
 
 ifndef I_WANT_A_QUAIL_STAR
 ifneq ($(WITHOUT_CHECK_API),true)
 $(BUILT_SYSTEMIMAGE): checkapi
-ifneq ($(TARGET_DISABLE_CMSDK),true)
-$(BUILT_SYSTEMIMAGE): checkapi-cm
-endif
+#ifneq ($(TARGET_DISABLE_CMSDK),true)
+#$(BUILT_SYSTEMIMAGE): checkapi-cm
 endif
 endif
 
